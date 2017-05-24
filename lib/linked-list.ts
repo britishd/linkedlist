@@ -68,8 +68,30 @@ export class LinkedList<T> {
             previous = current;
             current = current.next;
         }
-        
+
         return false;
+    }
+
+    public contains(data: T) {
+        let current: Node<T> = this.head;
+
+        while (current !== null) {
+            if (compareData(current.data, data)) {
+                return true;
+            }
+
+            current = current.next;
+        }
+        return false;
+    }
+
+    public forEach() {
+        let current: Node<T> = this.head;
+
+        while (current !== null) {
+            console.log(current.data);
+            current = current.next;
+        }
     }
 
     public getHead() {

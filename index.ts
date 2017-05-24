@@ -11,3 +11,19 @@ class Person {
     }
 
 }
+
+let linkedList = new LinkedList(),
+    vlad = new Person("Vlad", 24),
+    nastya = new Person("Nastya", 24),
+    sasha = new Person("Sasha", 39),
+    andrey = new Person("Andrey", 39),
+    dima = new Person("Dima", 39);
+
+
+linkedList.add(vlad);
+linkedList.add(nastya);
+linkedList.add(sasha);
+linkedList.add(andrey);
+linkedList.add(dima);
+
+linkedList.forEach();
