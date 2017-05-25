@@ -26,4 +26,3 @@ linkedList.add(sasha);
 linkedList.add(andrey);
 linkedList.add(dima);
 
-linkedList.forEach();

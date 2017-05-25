@@ -3,42 +3,53 @@ import {compareData} from "./compare";
 
 export class LinkedList<T> {
 
-    private head: Node<T> = null;
-    private tail: Node<T> = null;
-    private count: number = 0;
+    private _head: Node<T> = null;
+    private _tail: Node<T> = null;
+    private _count: number = 0;
 
     constructor() {
+    }
+
+    get first(): Node<T> {
+        return this._head;
+    }
+
+    get last(): Node<T> {
+        return this._tail;
+    }
+
+    get length(): number {
+        return this._count;
     }
 
     public add(data: T) {
         let node: Node<T> = new Node(data);
 
-        if (this.head === null) {
-            this.head = node;
+        if (this._head === null) {
+            this._head = node;
         } else {
-            this.tail.next = node;
+            this._tail.next = node;
         }
 
-        this.tail = node;
-        this.count++;
+        this._tail = node;
+        this._count++;
     }
 
 
     public addAsFirst(data: T) {
         let node: Node<T> = new Node(data);
 
-        node.next = this.head;
-        this.head = node;
-        if (this.count === 0) {
-            this.tail = this.head;
+        node.next = this._head;
+        this._head = node;
+        if (this._count === 0) {
+            this._tail = this._head;
         }
 
-        this.count++;
-
+        this._count++;
     }
 
     public remove(data: T) {
-        let current: Node<T> = this.head;
+        let current: Node<T> = this._head;
         let previous: Node<T> = null;
 
         while (current !== null) {
@@ -46,22 +57,22 @@ export class LinkedList<T> {
             if (compareData(current.data, data)) {
 
                 if (previous === null) {
-                    this.head = this.head.next;
+                    this._head = this._head.next;
 
-                    if (this.head === null) {
-                        this.tail = null;
+                    if (this._head === null) {
+                        this._tail = null;
                     }
 
                 } else {
                     previous.next = current.next;
 
                     if (current.next === null) {
-                        this.tail = previous;
+                        this._tail = previous;
                     }
 
                 }
 
-                this.count--;
+                this._count--;
                 return true;
             }
 
@@ -73,7 +84,7 @@ export class LinkedList<T> {
     }
 
     public contains(data: T) {
-        let current: Node<T> = this.head;
+        let current: Node<T> = this._head;
 
         while (current !== null) {
             if (compareData(current.data, data)) {
@@ -85,17 +96,36 @@ export class LinkedList<T> {
         return false;
     }
 
-    public forEach() {
-        let current: Node<T> = this.head;
+    public forEach(callback: (T) => void): void {
+        let current: Node<T> = this._head;
 
         while (current !== null) {
-            console.log(current.data);
+            callback(current.data);
             current = current.next;
         }
     }
 
-    public getHead() {
-        return this.head;
+    /*
+     * Generator of LinkedList. Can iterate by values
+     *
+     * Example:
+     *
+     * let list = new LinkedList()
+     * let generator = linkedList.iterator();
+     *
+     * for (let person of generator) {
+     *   console.log(person)
+     * }
+     *
+     * */
+    public *generator(): IterableIterator<any> {
+        let current: Node<T> = this._head;
+
+        while (current !== null) {
+            yield current.data;
+            current = current.next;
+        }
     }
+
 
 }
