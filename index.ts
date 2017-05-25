@@ -20,9 +20,8 @@ let linkedList = new LinkedList(),
     dima = new Person("Dima", 39);
 
 
-linkedList.add(vlad);
-linkedList.add(nastya);
-linkedList.add(sasha);
-linkedList.add(andrey);
-linkedList.add(dima);
-
+linkedList.push(vlad);
+linkedList.push(nastya);
+linkedList.push(sasha);
+linkedList.push(andrey);
+linkedList.push(dima);

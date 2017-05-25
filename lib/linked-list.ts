@@ -22,7 +22,7 @@ export class LinkedList<T> {
         return this._count;
     }
 
-    public add(data: T) {
+    public push(data: T) {
         let node: Node<T> = new Node(data);
 
         if (this._head === null) {
@@ -36,7 +36,7 @@ export class LinkedList<T> {
     }
 
 
-    public addAsFirst(data: T) {
+    public pushAsFirst(data: T) {
         let node: Node<T> = new Node(data);
 
         node.next = this._head;
@@ -94,6 +94,21 @@ export class LinkedList<T> {
             current = current.next;
         }
         return false;
+    }
+
+    public getByIndex(index: number) {
+        if (typeof index !== "number") throw new TypeError("Index should be a number");
+        if (index > this._count || index < 0) return null;
+
+        let counter = 0;
+        let current: Node<T> = this._head;
+
+        while (counter < index) {
+            current = current.next;
+            counter++;
+        }
+
+        return current;
     }
 
     public forEach(callback: (T) => void): void {
