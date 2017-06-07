@@ -1,5 +1,4 @@
 import {Node} from './node';
-import {compareData} from "./compare";
 
 export class LinkedList<T> {
 
@@ -149,24 +148,6 @@ export class LinkedList<T> {
 
         previous.next = current.next;
         this._count--;
-    }
-
-    /**
-     * Compare input data with all data inside list and return compare result as a boolean;
-     * @param data : T
-     * @returns {boolean}
-     */
-    public contains(data: T): boolean {
-        let current: Node<T> = this._head;
-
-        while (current !== null) {
-            if (compareData(current.data, data)) {
-                return true;
-            }
-
-            current = current.next;
-        }
-        return false;
     }
 
     /**
