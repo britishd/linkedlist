@@ -27,18 +27,12 @@ linkedList.push(sasha);
 linkedList.push(andrey);
 linkedList.push(dima);
 
-console.log("get by index");
-console.log(linkedList.getByIndex(0));
-
-console.log("\n");
 linkedList.forEach((person: Person) => console.log(person));
 
 linkedList.insert(sam, 3);
 
-console.log("\n");
 linkedList.forEach((person: Person) => console.log(person));
 
 linkedList.remove(1);
 
-console.log("\n");
 linkedList.forEach((person: Person) => console.log(person));
