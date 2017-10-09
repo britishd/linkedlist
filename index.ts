@@ -34,5 +34,6 @@ linkedList.insert(sam, 3);
 linkedList.forEach((person: Person) => console.log(person));
 
 linkedList.remove(1);
+console.log("qkflkqbfjklqw");
 
 linkedList.forEach((person: Person) => console.log(person));
